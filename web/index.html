@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#111827">
+    <title>Ferdi VPN — кабинет</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="/assets/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <div class="brand-mark" aria-hidden="true">F</div>
+        <div>
+          <p class="eyebrow">FERDI VPN</p>
+          <h1>Личный кабинет</h1>
+        </div>
+      </header>
+
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div id="loading" class="loading">Загружаем кабинет…</div>
+
+      <div id="cabinet" hidden>
+        <section class="balance-card" aria-labelledby="balance-title">
+          <div>
+            <p id="greeting" class="muted">Ваш баланс</p>
+            <h2 id="balance" class="balance-value">— ₽</h2>
+          </div>
+          <span class="balance-icon" aria-hidden="true">₽</span>
+        </section>
+
+        <section class="panel" aria-labelledby="topup-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">КОШЕЛЁК</p>
+              <h2 id="topup-title">Пополнить баланс</h2>
+            </div>
+          </div>
+          <div class="amount-options" role="group" aria-label="Сумма пополнения">
+            <button class="amount-button" data-amount="300" type="button">300 ₽</button>
+            <button class="amount-button" data-amount="500" type="button">500 ₽</button>
+            <button class="amount-button" data-amount="1000" type="button">1000 ₽</button>
+          </div>
+          <form id="topup-form" class="topup-form">
+            <label for="custom-amount">Или укажите сумму от 50 до 50 000 ₽</label>
+            <div class="input-row">
+              <input id="custom-amount" name="amount" type="number" min="50" max="50000" step="1" inputmode="numeric" placeholder="Например, 700" required>
+              <button class="button button-primary" type="submit">Пополнить</button>
+            </div>
+          </form>
+          <p class="helper-text">Оплата защищённо проходит через RollyPay. Баланс обновится автоматически после подтверждения платежа.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="subscription-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ВАШ VPN</p>
+              <h2 id="subscription-title">Подписка</h2>
+            </div>
+            <span id="subscription-state" class="status-pill">Нет подписки</span>
+          </div>
+          <div id="subscription-empty" class="empty-state">Выберите тариф ниже, чтобы подключить VPN.</div>
+          <div id="subscription-details" hidden>
+            <p id="subscription-tariff" class="subscription-name"></p>
+            <p id="subscription-expiry" class="muted"></p>
+            <div class="key-box">
+              <code id="vpn-key"></code>
+              <button id="copy-key" class="copy-button" type="button" aria-label="Скопировать VPN-ключ">Копировать</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="plans-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ТАРИФЫ</p>
+              <h2 id="plans-title">Продлить или подключить</h2>
+            </div>
+          </div>
+          <div id="tariffs" class="tariff-list"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="history-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">КОШЕЛЁК</p>
+              <h2 id="history-title">История операций</h2>
+            </div>
+          </div>
+          <div id="transactions" class="transaction-list"></div>
+        </section>
+      </div>
+      <footer>Ferdi VPN · Все платежи подтверждаются сервером</footer>
+    </main>
+  </body>
+</html>
